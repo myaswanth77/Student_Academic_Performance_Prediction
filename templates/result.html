@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Academic Performance Prediction </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <section class="fixed-top">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-md navbar-light bg-light">
+                        <div class="d-flex align-items-center navbar-brand">
+                            <div class="h4">
+                                <i class="fa-solid fa-book-open-reader fa-md"></i>
+                                <span class="ml-2">SAPP</span>
+                            </div>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <div class="h5 ml-auto">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item home">
+                                        <a class="nav-link" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item login">
+                                        <a class="nav-link active" href="#">Grade Prediction</a>
+                                    </li>
+                                    <li class="nav-item login">
+                                        <a class="nav-link" href="#">Profile</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <div class="h4 col-lg-6 p-3 col-md-8 col-sm-12 mx-auto mt-5 ml-6 text-center">
+            <h4>{{ prediction_text }}</h4>
+        </div>
+    </div>
+    
+</body>
+</html>

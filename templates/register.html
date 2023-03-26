@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Academic Performance Prediction </title>
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+</head>
+<body>
+    <body>
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-8">
+                            <div class="d-flex align-items-center logo ">
+                                <div class="h4">
+                                    <i class="fa-solid fa-book-open-reader fa-md"></i>
+                                    <span class="ml-2"> SAPP</span>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid border-0">
+                    <div class="container  ">
+                       
+                        {% for message in messages %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+
+                          
+                 
+
+                        <div class="row  ">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="signup  ">
+                                    <h2 class="text-center">Sign up</h2>
+                                </div>
+                                <form action="{{ url_for('register') }}" method="post">
+
+                                
+                                    <div class="input-group border-bottom my-4 ">
+                                        <div class="input-group-text border-0 bg-white "><i class="fa-solid fa-user "></i></div>
+                                        <input type="text" class="form-control border-0 " name="name" id="name" placeholder="Name" required>
+                                    </div>
+                        
+                                    <div class="input-group border-bottom my-4 ">
+                                      <div class="input-group-text border-0 bg-white "><i class="fa-solid fa-address-card"></i></i></div>
+                                      <input type="number" class="form-control border-0 " id="rollno"  name="rollno" placeholder="Registeration Number" required>
+                                    </div>
+                        
+
+                                    <div class="input-group border-bottom my-4">
+                                      <div class="input-group-text border-0 bg-white "><i class="fa-solid fa-envelope"></i></div>
+                                      <input type="email" class="form-control border-0 " name="email" id="email" placeholder="Email" required>
+                                    </div>
+                        
+                                    <div class="input-group border-bottom my-4">
+                                      <div class="input-group-text border-0 bg-white "><i class="fa-solid fa-lock"></i></div>
+                                      <input type="password" class="form-control border-0 "name="password1"   id="password1" placeholder="Password" required>
+                                    </div>
+
+                                    <div class="input-group border-bottom my-4">
+                                      <div class="input-group-text border-0 bg-white "><i class="fa-solid fa-square-check"></i></div>
+                                      <input type="password" class="form-control border-0 "  name="password2" id="password2" placeholder="confirm Password" required>
+                                    </div>
+
+                                    <div class="form-group text-center my-5">
+                                        <button type="submit" class="btn btn-secondary register-btn">Register</button>
+                                    </div>
+                                    
+                        
+                                </form>
+                            </div>
+
+                            <div class="col-lg-6 col-md-12 col-sm-12    gx-3">
+                                
+                                <img class="img-fluid" id="signupimg" src="{{ url_for('static', filename='images/login-img.png') }}" alt="signup-img">
+                                <div class="form-group text-center my-5 ">
+                                    <a id='backtologin' href="/login">Already a member ?</a>
+                                  </div>
+                            </div>
+
+                            
+                        </div> 
+                    </div>       
+                </div>
+            </div>
+            <script src="{{ url_for('static', filename='js/register.js') }}"></script>   
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+         
+          
+  </body>
+  </html>
+  

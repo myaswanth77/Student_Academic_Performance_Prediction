@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Academic Performance Prediction </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+</head>
+<body>
+    <div class="container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-8">
+                            <div class="d-flex align-items-center logo ">
+                                <div class="h4">
+                                    <i class="fa-solid fa-book-open-reader fa-md"></i>
+                                    <span class="ml-2"> SAPP</span>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid border-0">
+                    <div class="container  ">
+                        <div class="row  ">
+                            
+                            <div class="col-lg-6 col-md-12 col-sm-12   ">
+                                
+                                <img class="img-fluid" id="signupimg" src="{{ url_for('static', filename='images/img-login.png') }}" alt="signup-img">
+                            </div>
+
+                            <div class="col-lg-6 col-md-12 col-sm-12  gx-5 p-4">
+                                <div class="signup  ">
+                                    <h2 class="text-center">Log in</h2>
+                                </div>
+                                
+                                {% for message in messages %}
+                                <div class="alert alert-danger " id="alert-message">
+                                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                    {{ message }}
+                                  </div>
+
+                                {% endfor %}
+
+                                <form action="{{ url_for('login') }}" method="post">
+          
+                              
+
+                                    <div class="input-group border-bottom my-4 ">
+                                      <div class="input-group-text border-0 bg-white "><i class="fa-solid fa-envelope"></i></div>
+                                      <input type="number" class="form-control border-0 " name="username" id="username" placeholder="Enter Your Registration Number" required>
+                                    </div>
+                        
+                                    <div class="input-group border-bottom my-4">
+                                      <div class="input-group-text border-0 bg-white "><i class="fa-solid fa-lock"></i></div>
+                                      <input type="password" name="password" id="password" class="form-control border-0 " placeholder=" Enter Your Password" required>
+                                    </div>
+
+                                
+                                      <div class="form-group text-center my-3 border-0">
+                                        <button type="submit" class="btn btn-secondary register-btn">login</button>
+                                    </div>
+                                      
+                                    <div class="form-group text-center my-5 ">
+                                        <a id='backtologin' href="/register">Don't have an account? create an account</a>
+                                      </div>
+                        
+                                </form>
+                            </div>
+
+                            
+                        </div> 
+                    </div>       
+                </div>
+            </div>
+            <script src="{{ url_for('static', filename='js/login.js') }}"></script>  
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+         
+          
+  </body>
+  </html>
+  
