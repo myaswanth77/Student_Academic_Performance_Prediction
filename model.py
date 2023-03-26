@@ -154,8 +154,3 @@ pickle.dump(pipe,open('sapp_final_algo.pkl','wb'))
 
 model=pickle.load(open('sapp_final_algo.pkl','rb'))
 
-
-# result = pipe.predict(pd.DataFrame([['319126510001','FEMALE',  21  ,  'Urban'   ,     4    ,    'T'   ,"higher education",'higher education','Homemaker','civil services: administrative or police', 'Other'  , '30min - 1hr', '1- <2 hr' ,     0     , 'Yes'  ,  'No' ,    'Yes'    ,     'No'   ,    'Yes'  ,'excellent',   'high'  ,'3 - medium','5 - very good',  93.1   ,       96.3      ,   90.23   ,    9.4    ,    18238.0    ,      0     ,                        0]],
-#                     columns=['RollNo'      ,'Gender', 'Age', 'Location', 'Famsize', 'Pstatus',      'Medu'      ,       'Fedu'     ,   'Mjob'  ,                  'Fjob'                  ,          'reason' ,  'traveltime', 'studytime', 'Failures','Famsup', 'Paid', 'Activities', 'HigherEdu', 'Internet', 'Famrel'  , 'Freetime',   'GoOut'  ,   'Health'    , '10th%' , '12thordiploma%', 'Internal','Prev cgpa',  'Eamcet Rank', 'Ecet Rank','Total_eamcet/ecet_grade']))
-
-# print(result)
