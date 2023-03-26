@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 # Create flask app
 flask_app = Flask(__name__)
-# flask_app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:Yash@709@localhost:5432/sapp_db'
+# flask_app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:test123@localhost:5432/sapp_db'
 # db=SQLAlchemy(flask_app)
 
 # class Login(db.Model):
