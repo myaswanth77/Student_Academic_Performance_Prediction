@@ -28,6 +28,43 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
 
+class UserData(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    rollno = db.Column(db.String(255))
+    gender = db.Column(db.String(255))
+    age = db.Column(db.Integer)
+    location = db.Column(db.String(255))
+    famsize = db.Column(db.String(255))
+    pstatus = db.Column(db.String(255))
+    medu = db.Column(db.String(255))
+    fedu = db.Column(db.String(255))
+    mjob = db.Column(db.String(255))
+    fjob = db.Column(db.String(255))
+    reason = db.Column(db.String(255))
+    traveltime = db.Column(db.String(255))
+    studytime = db.Column(db.String(255))
+    failures =db.Column(db.Integer)
+    famsup = db.Column(db.String(255))
+    paid = db.Column(db.String(255))
+    activities = db.Column(db.String(255))
+    higheredu = db.Column(db.String(255))
+    internet = db.Column(db.String(255))
+    famrel =db.Column(db.String(255))
+    freetime = db.Column(db.String(255))
+    goout = db.Column(db.String(255))
+    health = db.Column(db.String(255))
+    tenth_percent = db.Column(db.Float)
+    twelfth_percent = db.Column(db.Float)
+    internals = db.Column(db.Float)
+    sgpa = db.Column(db.Float)
+    entrance_exam = db.Column(db.String(255))
+    entrance_rank = db.Column(db.Integer)
+    predicted_grade = db.Column(db.Float)
+
+    # def __repr__(self):
+    #     print(repr(user_data))
+    #     return f"UserData('{self.rollno}', '{self.predicted_grade}')"
+
 
 
 # Define loader function for login manager
@@ -85,6 +122,7 @@ def register():
                 return redirect('/register')
 
             else:
+                
                 user = User(name=name, username=username, email=email, password=generate_password_hash(password1))
                 db.session.add(user)
                 db.session.commit()
@@ -113,6 +151,7 @@ def grade():
 
     return render_template('grade.html')
 
+@flask_app.route("/predict", methods = ["POST"])
 @flask_app.route("/predict", methods = ["POST"])
 def predict():
     data = {
@@ -155,8 +194,23 @@ def predict():
     input_df = pd.DataFrame([data], columns=data.keys())
 
     prediction = model.predict(input_df)
-
     output = {"prediction": round(prediction[0], 2)}
+
+    new_data = UserData(rollno=data['RollNo'], gender=data['Gender'], age=data['Age'], location=data['Location'],
+                            famsize=data['Famsize'], pstatus=data['Pstatus'], medu=data['Medu'], fedu=data['Fedu'], mjob=data['Mjob'],
+                            fjob=data['Fjob'], reason=data['reason'], traveltime=data['traveltime'], studytime=data['studytime'],
+                            failures=data['Failures'], famsup=data['Famsup'], paid=data['Paid'], activities=data['Activities'],
+                            higheredu=data['HigherEdu'], internet=data['Internet'], famrel=data['Famrel'], freetime=data['Freetime'],
+                            goout=data['GoOut'], health=data['Health'], tenth_percent=data['10th%'],
+                            twelfth_percent=data['12thordiploma%'], internals=data['Internal'],sgpa=data['Prev cgpa'] ,
+                            entrance_exam=request.form['entrance'], entrance_rank=request.form['entrance_rank'],
+                            predicted_grade=str(output["prediction"])) 
+
+    db.session.add(new_data)
+    db.session.commit()
+
+
+    
 
     prediction_text = "Predicted Grade is " + str(output["prediction"])
     return redirect(url_for("result", prediction_text=prediction_text))
