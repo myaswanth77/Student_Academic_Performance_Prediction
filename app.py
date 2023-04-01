@@ -1,12 +1,13 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template,redirect,url_for,flash
+from flask import Flask, request, render_template,redirect,url_for,flash, session
 import pickle
 import model
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
-from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user,login_required
+
 
 
 # Create flask app
@@ -61,9 +62,7 @@ class UserData(db.Model):
     entrance_rank = db.Column(db.Integer)
     predicted_grade = db.Column(db.Float)
 
-    # def __repr__(self):
-    #     print(repr(user_data))
-    #     return f"UserData('{self.rollno}', '{self.predicted_grade}')"
+   
 
 
 
@@ -86,7 +85,7 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user)
-            flash('Logged in successfully')
+            # flash('Logged in successfully')
             return redirect('/grade')
         else:
             flash('Invalid credentials')
@@ -94,11 +93,14 @@ def login():
 
     else:
         return render_template('login.html')
-    
+
+
 @flask_app.route('/logout')
+@login_required
 def logout():
     logout_user()
-    return redirect('/login')
+    flash('You have been logged out')
+    return redirect(url_for('home'))
 
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -152,9 +154,10 @@ def grade():
     return render_template('grade.html')
 
 @flask_app.route("/predict", methods = ["POST"])
-@flask_app.route("/predict", methods = ["POST"])
 def predict():
+    
     data = {
+
     'RollNo': request.form['rollno'],
     'Gender': request.form['gender'],
     'Age': request.form['age'],
@@ -212,13 +215,17 @@ def predict():
 
     
 
-    prediction_text = "Predicted Grade is " + str(output["prediction"])
+    prediction_text = str(output["prediction"])
     return redirect(url_for("result", prediction_text=prediction_text))
+
 
 @flask_app.route("/result")
 def result():
+    # Get the predicted grade from the request arguments
     prediction_text = request.args.get("prediction_text")
-    return render_template("result.html", prediction_text=prediction_text)
+
+    # Render the result template with the predicted grade
+    return render_template("result.html", predicted_grade=prediction_text)
 
 # Create database tables
 with flask_app.app_context():

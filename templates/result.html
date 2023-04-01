@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Academic Performance Prediction </title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
+  
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/result.css') }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
@@ -36,7 +38,7 @@
                                         <a class="nav-link active" href="#">Grade Prediction</a>
                                     </li>
                                     <li class="nav-item login">
-                                        <a class="nav-link" href="#">Profile</a>
+                                        <a class="nav-link" href="/logout">Logout</a>
                                     </li>
                                 </ul>
                             </div>
@@ -45,10 +47,35 @@
                 </div>
             </div>
         </section>
-        <div class="h4 col-lg-6 p-3 col-md-8 col-sm-12 mx-auto mt-5 ml-6 text-center">
-            <h4>{{ prediction_text }}</h4>
+        <div class="container" style="margin-top: 200px;">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="student-details">
+                        <h4>Result</h4>
+                        <!-- <div class="row">
+                            <div class="col-6"><strong>Name</strong></div>
+                            <div class="col-6">{{ name }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Registration Number</strong></div>
+                            <div class="col-6">{{ registration_number }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Previous Grade:</strong></div>
+                            <div class="col-6">{{ prev_grade }}</div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-6"><strong>Predicted Grade:</strong></div>
+                            <div class="col-6">{{ predicted_grade }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        
+        
+        
+
     
 </body>
 </html>
